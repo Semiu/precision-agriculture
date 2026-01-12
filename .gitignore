@@ -205,3 +205,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+pca_vs_raw/input/train_mnist.csv
+pca_vs_raw/input/train_mnist_folds.csv
