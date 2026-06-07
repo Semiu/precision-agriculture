@@ -208,3 +208,5 @@ __marimo__/
 
 pca_vs_raw/input/train_mnist.csv
 pca_vs_raw/input/train_mnist_folds.csv
+
+apple_quality/input/
