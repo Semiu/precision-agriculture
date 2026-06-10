@@ -125,10 +125,19 @@ def run(fold, model_name, tuner):
     # compute AUC score using probabilities
     auc = metrics.roc_auc_score(y_test, preds_pro)
 
-    #print evaluation results for the pass in fold. 
-    print(f"Fold {fold} | Model: {model_name} | Tunner: {tuner} | Accuracy: {accuracy} | AUC: {auc}") 
+    # remove the comment character to print evaluation results in command line. 
+    #print(f"Fold {fold} | Model: {model_name} | Tunner: {tuner} | Accuracy: {accuracy} | AUC: {auc}") 
 
+    # return the evaluation results
+    return {
+        "fold":fold,
+        "model": model_name,
+        "tuner": tuner,
+         "accuracy": round(accuracy, 4),
+          "auc": round(auc, 4)
+    }
 
+# run using command-line
 if __name__ == "__main__":
 
     # Parse comman-line argument 
