@@ -39,7 +39,7 @@ def get_grid_search(model_name):
         param_grid=param_grids[model_name],
         scoring="roc_auc",
         cv=5,
-        verbose=10
+        verbose=0
     )
 
 
@@ -47,7 +47,7 @@ def get_random_search(model_name):
     return model_selection.RandomizedSearchCV(
         estimator=models[model_name],
         param_distributions=param_grids[model_name],
-        n_iter=10,
+        n_iter=6,
         scoring="roc_auc",
         cv=5,
         verbose=10
