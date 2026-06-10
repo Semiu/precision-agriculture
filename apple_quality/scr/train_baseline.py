@@ -1,4 +1,5 @@
 import config
+import model_fetcher
 
 import argparse
 
@@ -10,7 +11,7 @@ from sklearn import linear_model
 from sklearn import metrics
 
 
-def run(fold): 
+def run(fold, selected_model): 
     """
     the function runs training and evaluation for a single fold in a 5-fold
     stratified cross-validation setup.
@@ -22,7 +23,7 @@ def run(fold):
     - Shuffle data and remove ID column
     - Create stratified folds
     - Split into training and validation sets
-    - Train Logistic Regression model
+    - Train the selected model
     - Evaluate using Accuracy and AUC
 
     NOTE:
@@ -75,7 +76,7 @@ def run(fold):
     y_test = df_test["quality"].values
 
     # Initialize Logistic Regression model
-    model = linear_model.LogisticRegression()
+    model = model_fetcher.models[selected_model]
 
     # Train the model
     model.fit(x_train, y_train)
@@ -101,10 +102,11 @@ if __name__ == "__main__":
     # Parse comman-line argument for fold number
     parser = argparse.ArgumentParser()
     parser.add_argument("--fold", type=int)
+    parser.add_argument("--selected_model", type=str)
     args = parser.parse_args()
 
     # Run training for the selected fold
-    run(fold = args.fold)
+    run(fold = args.fold, selected_model = args.selected_model)
 
 
 
